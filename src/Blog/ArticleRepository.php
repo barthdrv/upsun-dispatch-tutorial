@@ -164,7 +164,7 @@ final class ArticleRepository
         $words = str_word_count(strip_tags($markdown));
     
         // Round up so a partial minute still counts as a full minute.
-        return max(1, intdiv($words, self::WORDS_PER_MINUTE) + 1);
+        return max(1, intdiv($words + self::WORDS_PER_MINUTE - 1, self::WORDS_PER_MINUTE));
     }
 
     private function converter(): MarkdownConverter
