@@ -61,7 +61,7 @@
     <section id="categories" class="mx-auto max-w-6xl px-5 pt-16">
         <div class="flex items-end justify-between border-b border-slatey-200 pb-5">
             <h2 class="font-display text-2xl font-bold tracking-tight text-ink-950">Latest articles</h2>
-            <span class="text-sm text-slatey-400">{{ articles|length }} posts</span>
+            <span class="text-sm text-slatey-400">{{ articles|length }} post{{ 1 == articles|length ? '' : 's' }}</span>
         </div>
 
         <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

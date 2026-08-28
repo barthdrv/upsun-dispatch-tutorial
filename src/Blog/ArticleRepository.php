@@ -50,6 +50,10 @@ final class ArticleRepository
 
     /**
      * The single featured article, falling back to the most recent one.
+     *
+     * When several articles carry `featured: true`, the most recent one wins;
+     * the others are returned by findAll()/findAllExcept() as ordinary
+     * articles, so they still render as regular cards.
      */
     public function findFeatured(): ?Article
     {

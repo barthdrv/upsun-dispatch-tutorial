@@ -18,9 +18,15 @@ final class BlogController extends AbstractController
     #[Route('/', name: 'home', methods: ['GET'])]
     public function index(): Response
     {
+        $featured = $this->articles->findFeatured();
+
+        // The featured article already has the hero slot; keep it out of the
+        // grid below so it is not rendered twice on the same page.
         return $this->render('blog/index.html.twig', [
-            'featured' => $this->articles->findFeatured(),
-            'articles' => $this->articles->findAll(),
+            'featured' => $featured,
+            'articles' => null !== $featured
+                ? $this->articles->findAllExcept($featured->slug)
+                : $this->articles->findAll(),
         ]);
     }
 
